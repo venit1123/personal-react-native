@@ -3,22 +3,23 @@ import { Text, StyleSheet, View, Button, FlatList } from "react-native";
 
 const HomeScreen = ({navigation}) => {
   const navigator_list = [
-    { name: 'Professional'},
-    { name: 'Personal'},
-    { name: 'PhotoAlbum'}
+    { key: 'Professional', buttonName: 'Professional'},
+    { key: 'Personal', buttonName: 'Personal'},
+    { key: 'PhotoAlbum', buttonName: 'Photo Album'},
+    { key: 'Counter', buttonName: 'Counter'}
   ]
 
   return (
     <View>
       <Text style={styles.textStyle}>Home</Text>
       <FlatList
-        keyExtractor={(navigator) => navigator.name}
+        keyExtractor={(navigator) => navigator.key}
         data={navigator_list}
         renderItem={({ item }) => {
           return (
             <Button
-              onPress={()=> navigation.navigate(item.name)}
-              title={item.name}/>
+              onPress={() => navigation.navigate(item.key)}
+              title={item.buttonName}/>
             )
         }}>
 
